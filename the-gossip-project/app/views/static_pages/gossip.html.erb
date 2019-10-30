@@ -1,0 +1,8 @@
+<h1>StaticPages#gossip</h1>
+<p>Find me in app/views/static_pages/gossip.html.erb</p>
+<p>Article :</p>
+<p>Titre : <%=  @gossip.title %> </p>
+<p>Contenu : <%=  @gossip.content %> </p>
+<p>Date de creation :  <%=  @gossip.created_at %> </p>
+<%= link_to 'Author', user_path(@gossip.user_id)%>
+<%= link_to 'Home', root_path %> 

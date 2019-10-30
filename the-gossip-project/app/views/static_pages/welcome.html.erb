@@ -1,3 +1,16 @@
 <h1>StaticPages#welcome</h1>
 <p>Find me in app/views/static_pages/welcome.html.erb</p>
-<p>Bienvenue: <%= params[:first_name] %></p>
+<% if params[:first_name] != nil %>
+    <p>Bienvenue: <%= params[:first_name]%> </p>
+ <% end %>
+
+<% @users.each do |author| %>
+    <p>Bienvenue: <%=  author.first_name %></p>
+<% end %>
+
+<% @gossips.each do |title| %>
+    <p>content: <%=  title.title %></p>
+<% end %>
+
+
+<p>Bienvenue: <%= @gossips.each %></p>

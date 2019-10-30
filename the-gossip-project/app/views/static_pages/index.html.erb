@@ -1,0 +1,43 @@
+<h1>StaticPages#index</h1>
+<p>Find me in app/views/static_pages/index.html.erb</p>
+
+<% if flash[:success]%>
+<div class="alert alert-success" role="alert">
+  <%= flash[:success]%>
+</div>
+<% end %>
+<%= yield %>
+
+<div class="container-fluid">
+<div class="row">
+<div class="card-columns">
+<% @gossips.each_with_index do |gossip, index| %>
+    <% if @i >= @colors.count && index <= @gossips.count
+        @i = 0
+      end
+      @color = @colors[@i]
+      puts @color%>
+      
+        <div class="card border-<%= @color%>">
+            <div class="card-header border-<%= @rand_color%> text-<%= @color%>"><%=  gossip.title %></div>
+            <img class="card-img-top" src="" alt="     image   ">
+            <div class="card-body text-<%= @rand_color%>">
+            <h5 class="card-title"><%=  gossip.title %></h5>
+            <p class="card-text"><%= link_to 'Article', gossips_path(gossip.id), :class => "btn btn-#{@color}"%></p>
+            </div>
+            <div class="card-footer border-<%= @color%>">
+            <small class="text-<%= @color%>"><%=  gossip.updated_at %></small>
+            </div>
+        </div>
+    <% @i+= 1%>
+<% end %>
+</div>
+</div>
+    <% @users.each do |author| %>
+        <p>Bienvenue:
+        <%=  author.first_name %> 
+        <%= link_to 'Description', user_path(author.id)%>
+        </p>
+    <% end %>
+
+

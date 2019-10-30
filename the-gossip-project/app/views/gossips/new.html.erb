@@ -1,0 +1,72 @@
+<h1>Gossips#new</h1>
+<p>Find me in app/views/gossips/new.html.erb</p>
+<!-- 
+    <form action="<%= root_path%>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+    <input type="text" name="<%= params[:title] %>%" > 
+    <input type="text" name="<%= params[:content] %>%" > 
+    <input type="submit" value="envoyez">
+    </form>
+-->
+ <!-- <% if @gossip.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+        <p>Nous n'avons pas réussi à créer le potin pour la(les) raison(s) suivante(s) :</p>
+        <ul>
+            <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>  -->
+
+<div class="container">
+<%= form_tag url_for(action: "create"), method: "post" do %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+
+<div class="col-sm-10">
+<div class="form-group has-danger">
+# <%= label_tag 'Title',  @title, class: "form-control-label", for: "inputDanger1" %>
+  # <%= text_field_tag 'title', @title , class: "form-control form-control-danger", id: "inputDanger1"%>
+  <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
+</div>
+</div>
+
+
+
+<div class="col-sm-10">
+<div class="form-group has-success has-feedback">
+# <%= label_tag 'Title' %>
+# <%= text_field_tag 'title', @title , class: "form-control" , id: "inputSuccess"%>
+<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+</div>
+</div>
+
+<div class="col-sm-10">
+<div class="form-group has-success has-feedback">
+# <%= label_tag 'Content' %>
+# <%= text_area_tag 'content', @content, class: "form-control" , id: "inputSuccess" %>
+<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+</div>
+# <%= submit_tag "Create Post" %>
+
+    <% end %>
+</div>
+
+<!--
+
+<div class="alert alert-success" role="alert">
+  A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+
+<div class="alert alert-danger" role="alert">
+  A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+-<div class="alert alert-success" role="alert">
+  A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>
+
+<div class="alert alert-danger" role="alert">
+  A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>-->
