@@ -178,11 +178,12 @@ end
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   description = Faker::Movie.quote
-  email = Faker::Internet.email(name: "#{first_name} #{description}", separators: '-')
+  email = Faker::Internet.email(name: first_name)
   age = rand(16..70)
   User.create(first_name: first_name, last_name: last_name,
-    description: description, email: email, age: age,
-  city_id: City.all.sample.id)
+  description: description, email: email, age: age,
+  city_id: City.all.sample.id,
+  password: "ok")
 end
 
 # getting to the gossips (requires users)
@@ -208,5 +209,5 @@ end
 20.times do
   sender =  User.all.sample.id
   recipient =  User.all.sample.id
-  pm = PrivateMessage.create(content: Faker::Lorem.paragraphs, recipient_id: sender, sender_id: recipient)
+  pm = PrivateMessage.create(content: Faker::Lorem.paragraphs, recipient_id: recipient, sender_id: sender )
 end

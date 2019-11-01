@@ -4,20 +4,24 @@ class User < ApplicationRecord
     has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
     has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
     
+    has_secure_password
+
     # validates :name, length: { minimum: 2 }
     # validates :bio, length: { maximum: 500 }
     # validates :password, length: { in: 6..20 }
     # validates :registration_number, length: { is: 6 }
     validates :email,
-    presence: true,
-    uniqueness: true,
+    # presence: true,
+    # #uniqueness: true,
+    # length: { minimum: 6} 
     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
     
-    validates :first_name,
-    length: { in: 3..12 },
-    presence: true
+    # validates :first_name,
+    # length: { in: 3..12 },
+    # presence: true
 
-    validates :decription, 
-    length: { maximum: 500}
+    # validates :description, 
+    # length: { maximum: 500}
+    
     
 end

@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
     @gossips = Gossip.all
     @colors = ["primary",  "secondary", "success", "danger", "warning", "info", "dark"]
     @i = 0
+    @gossip = params[:gossip]
     # @gossip = Gossip.new
   # end
     # <% @rand_color = @color.sample%> 
