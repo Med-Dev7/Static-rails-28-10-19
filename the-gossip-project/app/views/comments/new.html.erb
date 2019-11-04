@@ -1,0 +1,26 @@
+<h1>Comments#new</h1>
+<p>Find me in app/views/comments/new.html.erb</p>
+
+  <% if @comment.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+        <p>Nous n'avons pas réussi à créer le potin pour la(les) raison(s) suivante(s) :</p>
+        <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<div class="container">
+
+  <%= form_tag url_for(action: 'create'), method: "post" do %><!-- il fut changer create en _path pour la convention mais ne fonctionne pas-->
+
+    <div class="col-sm-10">
+      # <%= label_tag 'Content' %>
+      # <%= text_area_tag 'content', @content, class: "form-control" %>
+    </div>
+    # <%= submit_tag "Create Post" %>
+
+  <% end %>
+</div>

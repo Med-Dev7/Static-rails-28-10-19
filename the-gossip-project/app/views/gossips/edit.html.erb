@@ -1,0 +1,31 @@
+<h1>Gossips#edit</h1>
+<p>Find me in app/views/gossips/edit.html.erb</p>
+
+<% if @gossip.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+        <p>Nous n'avons pas réussi à créer le potin pour la(les) raison(s) suivante(s) :</p>
+        <ul>
+            <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<div class="container">
+
+  <%= form_tag url_for(action: "update"), method: "put" do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="col-sm-10">
+      # <%= label_tag 'Title' %>
+      # <%= text_field_tag 'title', @title , class: "form-control" , id: "inputSuccess"%>
+    </div>
+
+    <div class="col-sm-10">
+      # <%= label_tag 'Content' %>
+      # <%= text_area_tag 'content', @content, class: "form-control" , id: "inputSuccess" %>
+    </div>
+    # <%= submit_tag "Create Post" %>
+
+  <% end %>
+</div>

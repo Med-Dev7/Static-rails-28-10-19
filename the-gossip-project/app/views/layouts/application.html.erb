@@ -21,8 +21,6 @@
     </button>
     <div class="collapse navbar-collapse d-flex " id="navbarNavDropdown">
 
-        
-          
             <%= link_to "Home", root_path, :class => " nav-item nav-link" %>
 
 
@@ -32,16 +30,10 @@
             <%= link_to "Welcome", welcome_path(params[:first_name]), :class => "nav-item nav-link" %>
             <% end %>
             <span class="sr-only">(current)</span>    
-      
-
+            <%= link_to "Create gossip", new_gossip_path, :class => "nav-item nav-link" %><!-- lutiliateur cree un gossip-->
             <%= link_to "Team", team_path, :class => "nav-item nav-link" %>
 
-
-
             <%= link_to "Contact", contact_path, :class => "nav-item nav-link" %>
-
-
-            <%= link_to "Inscription", new_session_path, :class => "nav-item nav-link" %> <!-- ajouter routes vers le log-->
 
           <div class="dropdown show ml-auto">
             <a class=" nav-link dropdown-toggle  ml-auto" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,9 +41,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <% if current_user == nil %>
+            <%= link_to "Inscription", new_user_path, :class => "nav-item nav-link" %> <!-- ajouter routes vers le log-->
               <%= link_to "Connexion", new_session_path, :class => "dropdown-item" %> <!-- ajouter routes vers le log-->
               <% else %>
-              <%= link_to "Dashboard", new_session_path, :class => "dropdown-item" %> <!-- ajouter routes vers le log-->
+              <%= link_to "Dashboard", users_path, :class => "dropdown-item" %> <!-- ajouter routes vers le log-->
               <%= link_to "Se déconnecter", session_path(session.id), method: :delete, :class => "dropdown-item" %>
               <% end %>
             </div>
@@ -59,5 +52,8 @@
     </div>
   </nav>
    <%= yield %>
+
+
+
   </body>
 </html>

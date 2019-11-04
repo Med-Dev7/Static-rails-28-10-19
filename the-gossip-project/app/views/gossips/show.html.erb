@@ -1,8 +1,22 @@
 <h1>StaticPages#gossip</h1>
 <p>Find me in app/views/static_pages/gossip.html.erb</p>
+<% if flash[:danger]%>
+<div class="alert alert-danger" role="alert">
+  <%= flash[:danger]%>
+</div>
+<% end %>
+<%= yield %>
+
 <p>Article :</p>
 <p>Titre : <%=  @gossip.title %> </p>
 <p>Contenu : <%=  @gossip.content %> </p>
 <p>Date de creation :  <%=  @gossip.created_at %> </p>
 <%= link_to 'Author', user_path(@gossip.user_id)%>
 <%= link_to 'Home', root_path %> 
+<%= link_to "Delete", gossip_path(@gossip.id), method: :delete  %><!-- bonne facon d utiliser des methode pour aller vers le delete-->
+<%= link_to 'Update', edit_gossip_path(@gossip.id) %>
+<%= link_to 'comment', new_gossip_comment_path(@gossip.id) %> 
+<h3>Commentaires :</h3>
+<% @comments.each do |comment|%>
+<p>commentaire : <%= comment.content %> </p>
+<% end %>
